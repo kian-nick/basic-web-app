@@ -37,5 +37,15 @@ export default function QueryProcessor(query: string): string {
     } 
   }
 
+  if (query.toLowerCase().includes("largest")) {
+    const numbers = query.match(/\d+/g); 
+    if (numbers) {
+      const num1 = parseInt(numbers[0]);
+      const num2 = parseInt(numbers[1]);
+      const num3 = parseInt(numbers[2]);
+      return String(Math.max(num1, num2, num3));
+    } 
+  }
+  
 return "";
 }
