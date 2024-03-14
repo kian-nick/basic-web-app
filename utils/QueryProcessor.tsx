@@ -7,6 +7,20 @@ function findSquareAndCubeNumbers(numbers:number[]) : number[] {
   });
 }
 
+function findPrime(numbers:number[]) : number[] {
+  return numbers.filter(number => {
+    if (number <= 1) {
+      return false;
+    }
+    for (let i = 2; i <= Math.sqrt(number); i++) {
+      if (number % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  });
+}
+
 export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("shakespeare")) {
     return (
@@ -81,6 +95,15 @@ export default function QueryProcessor(query: string): string {
       const num2 = parseInt(numbers[1]);
       return String(num1 - num2);
     } 
+  }
+
+  if (query.toLowerCase().includes("prime")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers) {
+      const numArray = numbers.map(number => parseInt(number));
+      const squareAndCubeNumbers = findPrime(numArray);
+      return squareAndCubeNumbers.join(", ");;
+    }
   }
 
 return "";
