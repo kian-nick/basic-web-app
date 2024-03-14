@@ -6,15 +6,27 @@ export default function QueryProcessor(query: string): string {
       "writer in the English language and the world's pre-eminent dramatist."
     );
   }
+
   if (query.toLowerCase().includes("andrew id")) {
     return (
       "Your Andrew ID is mkarim."
     );
   }
+
   if (query.toLowerCase().includes("name")) {
     return (
       "Kian"
     );
   }
-  return "";
+
+  if (query.toLowerCase().includes("plus")) {
+    const numbers = query.match(/\d+/g); 
+    if (numbers) {
+      const num1 = parseInt(numbers[0]);
+      const num2 = parseInt(numbers[1]);
+      return String(num1 + num2);
+    } 
+  }
+
+return "";
 }
