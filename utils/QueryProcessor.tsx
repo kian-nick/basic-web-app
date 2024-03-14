@@ -110,7 +110,7 @@ export default function QueryProcessor(query: string): string {
     if (numbers) {
       const numArray = numbers.map(number => parseInt(number));
       const squareAndCubeNumbers = findPrime(numArray);
-      return squareAndCubeNumbers.join(", ");;
+      return squareAndCubeNumbers.join(", ");
     }
   }
 
