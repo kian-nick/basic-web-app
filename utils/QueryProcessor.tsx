@@ -28,5 +28,14 @@ export default function QueryProcessor(query: string): string {
     } 
   }
 
+  if (query.toLowerCase().includes("multiplied")) {
+    const numbers = query.match(/\d+/g); 
+    if (numbers) {
+      const num1 = parseInt(numbers[0]);
+      const num2 = parseInt(numbers[1]);
+      return String(num1 * num2);
+    } 
+  }
+
 return "";
 }
