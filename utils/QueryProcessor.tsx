@@ -45,9 +45,17 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("plus")) {
     const numbers = query.match(/\d+/g); 
     if (numbers) {
+      if (numbers.length === 2) {
       const num1 = parseInt(numbers[0]);
       const num2 = parseInt(numbers[1]);
       return String(num1 + num2);
+      }
+      if (numbers.length === 3) {
+        const num1 = parseInt(numbers[0]);
+        const num2 = parseInt(numbers[1]);
+        const num3 = parseInt(numbers[2]);
+        return String(num1 + num2 + num3);
+      }
     } 
   }
 
