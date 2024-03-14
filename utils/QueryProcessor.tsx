@@ -1,3 +1,12 @@
+function findSquareAndCubeNumbers(numbers:number[]) : number[] {
+  // Filter the array to find numbers that are both perfect squares and cubes
+  return numbers.filter(number => {
+      const sixthRoot = Math.pow(number, 1/6);
+      // Check if the sixth root is an integer
+      return sixthRoot === Math.floor(sixthRoot);
+  });
+}
+
 export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("shakespeare")) {
     return (
@@ -46,6 +55,15 @@ export default function QueryProcessor(query: string): string {
       return String(Math.max(num1, num2, num3));
     } 
   }
-  
+
+  if (query.toLowerCase().includes("square and a cube")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers) {
+      const numArray = numbers.map(number => parseInt(number));
+      const squareAndCubeNumbers = findSquareAndCubeNumbers(numArray);
+      return squareAndCubeNumbers.join(", ");;
+    }
+  }
+
 return "";
 }
